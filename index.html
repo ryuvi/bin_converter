@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Binary to Text Converter - Fast & Easy Tool</title>
+    <meta name="description"
+        content="Convert binary code to text easily with our simple and fast binary to text converter tool. Copy the converted text with one click!">
+    <meta name="keywords"
+        content="binary to text, binary converter, text converter, online converter, binary translation">
+    <meta name="author" content="Your Name or Brand">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <style>
+        .container {
+            max-width: 600px;
+            margin-top: 50px;
+        }
+
+        #result {
+            white-space: pre-wrap;
+        }
+    </style>
+    <!-- Open Graph Meta Tags for Better Social Sharing -->
+    <meta property="og:title" content="Binary to Text Converter - Fast & Easy Tool">
+    <meta property="og:description"
+        content="Easily convert binary code to text with our simple converter tool. Fast and reliable, with a one-click copy feature.">
+    <meta property="og:image" content="URL_TO_YOUR_IMAGE_HERE">
+    <meta property="og:url" content="URL_OF_YOUR_PAGE_HERE">
+    <meta property="og:type" content="website">
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Binary to Text Converter - Fast & Easy Tool">
+    <meta name="twitter:description"
+        content="Easily convert binary code to text with our simple converter tool. Fast and reliable, with a one-click copy feature.">
+    <meta name="twitter:image" content="URL_TO_YOUR_IMAGE_HERE">
+</head>
+
+<body>
+    <section class="section">
+        <div class="container">
+            <h1 class="title has-text-centered">Binary to Text Converter</h1>
+            <div class="field">
+                <label class="label">Binary</label>
+                <div class="control">
+                    <textarea class="textarea" id="inputBinary" placeholder="Enter the binary code here..."></textarea>
+                </div>
+            </div>
+            <div class="field">
+                <div class="control">
+                    <button class="button is-primary" onclick="convertToText()">Convert</button>
+                </div>
+            </div>
+            <div class="field">
+                <label class="label">Text</label>
+                <div class="control">
+                    <textarea class="textarea" id="result" readonly
+                        placeholder="The converted text will appear here..."></textarea>
+                </div>
+            </div>
+            <div class="field">
+                <div class="control">
+                    <button class="button is-link" onclick="copyToClipboard()">Copy to Clipboard</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function convertToText() {
+            const binary = document.getElementById('inputBinary').value;
+            const result = binary
+                .split(' ')
+                .map(bin => String.fromCharCode(parseInt(bin, 2)))
+                .join('');
+            document.getElementById('result').value = result;
+        }
+
+        function copyToClipboard() {
+            const result = document.getElementById('result');
+            result.select();
+            result.setSelectionRange(0, 99999); // For mobile devices
+            document.execCommand('copy');
+            alert('Text copied to clipboard!');
+        }
+    </script>
+</body>
+
+</html>
